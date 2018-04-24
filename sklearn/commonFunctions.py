@@ -5,7 +5,7 @@ from six.moves import urllib
 # get_ipython().run_line_magic('matplotlib', 'inline')
 import matplotlib
 import matplotlib.pyplot as plt
-
+import pandas as pd
 PROJECT_ROOT_DIR = ""
 
 
@@ -22,6 +22,9 @@ def fetchData(url, path, tgzName):
         os.makedirs(path)
     tgzPath = os.path.join(path, tgzName)
     urllib.request.urlretrieve(url, tgzPath)
-    tgz = tarfile.open(tgzName)
-    tgz.extract(path=path)
+    tgz = tarfile.open(tgzPath)
+    tgz.extractall(path=path)
     tgz.close()
+
+def loadData (path,csvName):
+    return pd.read_csv(os.path.join(path, csvName))
