@@ -31,7 +31,7 @@ plt.rcParams['xtick.labelsize'] = 12
 plt.rcParams['ytick.labelsize'] = 12
 
 # Where to save the figures
-PROJECT_ROOT_DIR = "."
+PROJECT_ROOT_DIR = ""
 CHAPTER_ID = "fundamentals"
 
 def save_fig(fig_id, tight_layout=True):
