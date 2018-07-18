@@ -31,13 +31,14 @@ def make_meshgrid(x, y, h=.02):
                          np.arange(y_min, y_max, h))
     return xx, yy
 
+
 def Draw(model):
     X0, X1 = X[:, 0], X[:, 1]
     xx, yy = make_meshgrid(X0, X1)
     ax = plt.figure().add_subplot(111)
-    Z = model.predict(np.c_[xx.ravel(),yy.ravel()])
+    Z = model.predict(np.c_[xx.ravel(), yy.ravel()])
     Z = Z.reshape(xx.shape)
-    ax.contourf(xx,yy, Z)
+    ax.contourf(xx, yy, Z)
     ax.scatter(X0, X1, c=y, cmap=plt.cm.coolwarm, s=20, edgecolors='k')
     ax.set_xlim(xmin=xx.min(), xmax=xx.max())
     ax.set_ylim(ymin=yy.min(), ymax=yy.max())
@@ -47,6 +48,7 @@ def Draw(model):
     ax.set_yticks(())
     plt.show()
 
+
 def svm_clf():
     svm_clf = Pipeline((
         ("scaler", StandardScaler()),
@@ -55,7 +57,9 @@ def svm_clf():
 
     svm_clf.fit(X, y)
     Draw(svm_clf)
-#svm_clf()
+
+
+# svm_clf()
 
 def Polynomial_svm_clf():
     Polynomial_svm_clf = Pipeline((
@@ -66,14 +70,17 @@ def Polynomial_svm_clf():
 
     Polynomial_svm_clf.fit(X, y)
     Draw(Polynomial_svm_clf)
-#Polynomial_svm_clf()
 
-def Poly_kernel_svm_clf ():
+
+# Polynomial_svm_clf()
+
+def Poly_kernel_svm_clf():
     poly_kernel_svm_clf = Pipeline((
         ("scaler", StandardScaler()),
         ("svm_clf", SVC(kernel="poly", degree=3, coef0=1, C=5))
     ))
     poly_kernel_svm_clf.fit(X, y)
     Draw(poly_kernel_svm_clf)
+
 
 Poly_kernel_svm_clf()
