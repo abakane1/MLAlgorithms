@@ -10,8 +10,8 @@ import matplotlib.pyplot as plt
 X, y = make_moons(noise=0.3, random_state=0)
 X = StandardScaler().fit_transform(X)
 X_train, X_test, y_tain, y_test = train_test_split(X, y, test_size=.4, random_state=42)
-#plt.scatter(X[:,0],X[:,1])
-#plt.show()
+# plt.scatter(X[:,0],X[:,1])
+# plt.show()
 
 log_clf = LogisticRegression()
 rnd_clf = RandomForestClassifier()
